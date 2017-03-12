@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F4BA6963-1EE4-4CB2-AF97-ABB1D3CDFBB2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjectxCam2</RootNamespace>
+    <AssemblyName>ProjectxCam2</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v16.1.Core, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v16.1.UI, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v16.1.Wizard, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v16.1, Version=16.1.2.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="Emgu.CV.DebuggerVisualizers.VS2015">
+      <HintPath>C:\Emgu\emgucv-windesktop 3.1.0.2504\bin\Emgu.CV.DebuggerVisualizers.VS2015.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.UI">
+      <HintPath>C:\Emgu\emgucv-windesktop 3.1.0.2504\bin\Emgu.CV.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.UI.GL">
+      <HintPath>C:\Emgu\emgucv-windesktop 3.1.0.2504\bin\Emgu.CV.UI.GL.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.World">
+      <HintPath>C:\Emgu\emgucv-windesktop 3.1.0.2504\bin\Emgu.CV.World.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DAO\CameraDAO.cs" />
+    <Compile Include="DAO\FaceDAO.cs" />
+    <Compile Include="DAO\HistoryDAO.cs" />
+    <Compile Include="Model\Historys.cs" />
+    <Compile Include="DAO\PeopleDAO.cs" />
+    <Compile Include="DAO\SqlDataHelper.cs" />
+    <Compile Include="FaceRecognizer.cs" />
+    <Compile Include="Model\Camera.cs" />
+    <Compile Include="Model\Face.cs" />
+    <Compile Include="Model\People.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecognizerEngine.cs" />
+    <Compile Include="UserColtrol\ucAddCam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserColtrol\ucAddCam.Designer.cs">
+      <DependentUpon>ucAddCam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserColtrol\ucAddPeople.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserColtrol\ucAddPeople.Designer.cs">
+      <DependentUpon>ucAddPeople.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserColtrol\ucAddTrainedImage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserColtrol\ucAddTrainedImage.Designer.cs">
+      <DependentUpon>ucAddTrainedImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserColtrol\ucAllCameras.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserColtrol\ucAllCameras.Designer.cs">
+      <DependentUpon>ucAllCameras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserColtrol\ucChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserColtrol\ucChart.Designer.cs">
+      <DependentUpon>ucChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserColtrol\ucCheckPeople.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserColtrol\ucCheckPeople.Designer.cs">
+      <DependentUpon>ucCheckPeople.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserColtrol\ucLogin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserColtrol\ucLogin.Designer.cs">
+      <DependentUpon>ucLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserColtrol\ucReconizationbyImage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserColtrol\ucReconizationbyImage.Designer.cs">
+      <DependentUpon>ucReconizationbyImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserColtrol\ucSetting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserColtrol\ucSetting.Designer.cs">
+      <DependentUpon>ucSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserColtrol\ucThongKe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserColtrol\ucThongKe.Designer.cs">
+      <DependentUpon>ucThongKe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserColtrol\ucXCam.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserColtrol\ucXCam.Designer.cs">
+      <DependentUpon>ucXCam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="xCamMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="xCamMainForm.Designer.cs">
+      <DependentUpon>xCamMainForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UserColtrol\ucAddCam.resx">
+      <DependentUpon>ucAddCam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserColtrol\ucAddPeople.resx">
+      <DependentUpon>ucAddPeople.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserColtrol\ucAddTrainedImage.resx">
+      <DependentUpon>ucAddTrainedImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserColtrol\ucAllCameras.resx">
+      <DependentUpon>ucAllCameras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserColtrol\ucChart.resx">
+      <DependentUpon>ucChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserColtrol\ucCheckPeople.resx">
+      <DependentUpon>ucCheckPeople.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserColtrol\ucLogin.resx">
+      <DependentUpon>ucLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserColtrol\ucReconizationbyImage.resx">
+      <DependentUpon>ucReconizationbyImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserColtrol\ucSetting.resx">
+      <DependentUpon>ucSetting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserColtrol\ucThongKe.resx">
+      <DependentUpon>ucThongKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserColtrol\ucXCam.resx">
+      <DependentUpon>ucXCam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="xCamMainForm.resx">
+      <DependentUpon>xCamMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\DataSources\ProjectxCam2.Model.Historys.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Image\image.png" />
+    <None Include="Resources\1489247941_Report.png" />
+    <None Include="Resources\1489158841_database-gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Engines\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
