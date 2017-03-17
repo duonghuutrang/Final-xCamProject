@@ -98,7 +98,7 @@ namespace ProjectxCam2.DAO
             People obj = new People();
 
             //sql = "Select * from Peoples a left join TrainedFace b on a.PeopleID = b.PeopleID where b.ID=" + _id;
-            sql = "Select a.ID,a.FirstName,a.LastName,a.Position,a.Phone,a.Address,a.BirthDay,a.PeopleID,a.Sex from Peoples a left join TrainedFace b on a.PeopleID = b.PeopleID where b.ID ="+_id;
+            sql = "Select a.ID,a.FirstName,a.LastName,a.Position,a.Phone,a.Address,a.BirthDay,a.PeopleID,a.Sex from Peoples a left join TrainedFace b on a.ID = b.PeopleID where b.ID ="+_id;
             dt = SqlDataHelper.GetDataToStringSQL(sql, con);
             if (dt.Rows.Count == 1)
             {

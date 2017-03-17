@@ -23,24 +23,25 @@ namespace ProjectxCam2.DAO
 
         public int addTrainFace(Face _obj)
         {
+            var datetimenow = Convert.ToDateTime(DateTime.Now.ToString()).ToString("yyyy-MM-dd HH:mm:ss");
             int iResult = -1;
             try
             {
                 if (con != null)
                 {
                     sql = "INSERT INTO TrainedFace(CameraID,PeopleID,FaceCaptured,FaceTrainedPath,DateCaptured,Comment,isDeleted) values(";
-                    sql += "N'" + _obj.CameraID + "'";
-                    sql += ",'" + _obj.PeopleID + "'";
+                    sql += "" + _obj.CameraID + "";
+                    sql += "," + _obj.PeopleID + "";
                     sql += ",'" + _obj.FaceCaptured + "'";
                     sql += ",'" + _obj.FaceTrainedPath + "'";
-                    sql += ",'" + _obj.DateCaptured.ToString() + "'";                                    
+                    sql += ",'" + datetimenow + "'";                                    
                     sql += ",'" + _obj.Comment + "'";                    
                     sql += ",'" + _obj.isDeleted.ToString() + "')";
                    
                     iResult = SqlDataHelper.ExecuteNonQuery(sql, con);
                     if (iResult == 1)
                     {
-                        sql = "SELECT MAX(ID) FROM Cameras";
+                        sql = "SELECT MAX(ID) FROM TrainedFace";
                         iResult = SqlDataHelper.GetMaxID(sql, con);
                         iResult = int.Parse(_obj.ID.ToString());
                     }
@@ -64,7 +65,7 @@ namespace ProjectxCam2.DAO
                     {
                         Face obj = new Face();
                         obj.ID = int.Parse(Row["ID"].ToString());
-                        obj.PeopleID = Row["PeopleID"].ToString();
+                        obj.PeopleID = int.Parse(Row["PeopleID"].ToString());
                         obj.CameraID = int.Parse(Row["CameraID"].ToString());
 
                         //obj.FaceCaptured = int.Parse(Row["FaceCaptured"].ToString());
@@ -95,7 +96,7 @@ namespace ProjectxCam2.DAO
                     {
                         Face obj = new Face();
                         obj.ID = int.Parse(Row["ID"].ToString());
-                        obj.PeopleID = Row["PeopleID"].ToString();
+                        obj.PeopleID = int.Parse(Row["PeopleID"].ToString());
                         obj.CameraID = int.Parse(Row["CameraID"].ToString());
 
                         //obj.FaceCaptured = int.Parse(Row["FaceCaptured"].ToString());

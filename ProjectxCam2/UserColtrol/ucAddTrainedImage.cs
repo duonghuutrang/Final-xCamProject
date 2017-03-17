@@ -112,8 +112,8 @@ namespace ProjectxCam2.UserColtrol
                             facetoShow[i].FaceTrainedPath = path;                        
                         else
                             return;
-                        facetoShow[i].PeopleID = txtPeopleID.Text.Trim();
-                        facetoShow[i].DateCaptured = DateTime.Now;
+                        facetoShow[i].PeopleID = int.Parse(txtPeopleID.Text.Trim());
+                       // facetoShow[i].DateCaptured = DateTime.Now; 
                     }
                     catch { }
                     return;
@@ -160,7 +160,7 @@ namespace ProjectxCam2.UserColtrol
         private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
             People emp = (People)gridView1.GetRow(e.RowHandle);
-            txtPeopleID.Text = emp.PeopleID;
+            txtPeopleID.Text = emp.ID.ToString();
         }
         #endregion
 
@@ -174,10 +174,11 @@ namespace ProjectxCam2.UserColtrol
         #region [Capture a face and save]
         private string captureAFace(int i)
         {
+            var fullname = "";
             var filename = "";
             try
             {
-                filename = storeImagePath + txtPeopleID.Text.Trim() + "_" + i + ".bmp";
+                fullname = storeImagePath + txtPeopleID.Text.Trim() + "_" + i + ".bmp";
                 if (trainingImage != null)
                 {
                     switch (i)
@@ -202,7 +203,7 @@ namespace ProjectxCam2.UserColtrol
                             break;
                     }
                 }
-                trySave(filename);
+                trySave(fullname);
             }
             catch { }
             return filename;

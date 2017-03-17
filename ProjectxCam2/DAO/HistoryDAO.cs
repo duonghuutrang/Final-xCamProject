@@ -21,6 +21,7 @@ namespace ProjectxCam2.DAO
         }
         public int addHistory(Historys _obj)
         {
+            var datetimenow = Convert.ToDateTime(DateTime.Now.ToString()).ToString("MM/dd/yyyy HH:mm:ss");
             int iResult = -1;
             try
             {

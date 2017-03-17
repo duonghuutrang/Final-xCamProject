@@ -10,7 +10,7 @@ namespace ProjectxCam2.Model
     {
         public int ID { set; get; }
         public int CameraID { set; get; }
-        public string PeopleID { set; get; }
+        public int PeopleID { set; get; }
         public byte[] FaceCaptured { get; set; }
         public string FaceTrainedPath { set; get; }
         public DateTime DateCaptured { get; set; }
