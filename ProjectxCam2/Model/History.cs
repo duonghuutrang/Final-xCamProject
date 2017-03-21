@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectxCam2.Model
 {
-    class Historys
+    class History
     {
         public int ID { set; get; }
         public int CameraID { set; get; }

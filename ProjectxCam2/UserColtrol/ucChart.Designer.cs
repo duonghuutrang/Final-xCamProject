@@ -58,7 +58,7 @@
             // 
             // historysBindingSource
             // 
-            this.historysBindingSource.DataSource = typeof(ProjectxCam2.Model.Historys);
+            this.historysBindingSource.DataSource = typeof(ProjectxCam2.Model.History);
             // 
             // ucChart
             // 

@@ -138,7 +138,7 @@ namespace ProjectxCam2.UserColtrol
         private int saveKnownImage(Image<Bgr, byte> frame, People p)
         {           
             var filename = "";
-            Historys h = new Historys();
+            History h = new History();
             h.CameraID = cameraID;
             h.PeopleID = p.ID;
             h.isDeleted = false;
@@ -166,7 +166,7 @@ namespace ProjectxCam2.UserColtrol
         }
         private int SaveUnknownImage(Image<Gray, byte> face, Image<Bgr, byte> frame, int _method)
         {
-            Historys h = new Historys();
+            History h = new History();
             int num = hDAO.getMaxID();
             var filename = "face_" + num + ".bmp";
             var framename = "frame_" + num + ".bmp";
@@ -239,7 +239,7 @@ namespace ProjectxCam2.UserColtrol
 
         private void gridView2_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
-            Historys his = (Historys)gridView2.GetRow(e.RowHandle);
+            History his = (History)gridView2.GetRow(e.RowHandle);
             try
             {
                 txtName.Text = his.FirstName + " " + his.LastName;
@@ -257,13 +257,13 @@ namespace ProjectxCam2.UserColtrol
         private bool checkSaveCondition(int _id)
         {
             bool result = false;
-            Historys his = new Historys();
+            History his = new History();
 
             his = hDAO.getLatestHistorybyPeopleID(_id);
 
-            var savedtime = Convert.ToDateTime(his.DateCaptured.ToString()).ToString("MM/dd/yyyy HH:mm:ss");
-            // var datetimenow = Convert.ToDateTime(DateTime.Now.ToString()).ToString("MM/dd/yyyy HH:mm:ss");
-            var datetimenow = DateTime.Now.ToString();
+            var savedtime = Convert.ToDateTime(his.DateCaptured.ToString()).ToString("yyyy-MM-dd HH:mm:ss");
+            var datetimenow = Convert.ToDateTime(DateTime.Now.ToString()).ToString("yyyy-MM-dd HH:mm:ss");
+            //var datetimenow = DateTime.Now.ToString();
             var minute = hDAO.getMinuteDiff(savedtime, datetimenow);          
             if (minute > saveSequent)
                 result = true;

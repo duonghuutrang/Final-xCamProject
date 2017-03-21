@@ -76,7 +76,7 @@
     <Compile Include="DAO\CameraDAO.cs" />
     <Compile Include="DAO\FaceDAO.cs" />
     <Compile Include="DAO\HistoryDAO.cs" />
-    <Compile Include="Model\Historys.cs" />
+    <Compile Include="Model\History.cs" />
     <Compile Include="DAO\PeopleDAO.cs" />
     <Compile Include="DAO\SqlDataHelper.cs" />
     <Compile Include="FaceRecognizer.cs" />

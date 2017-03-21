@@ -19,19 +19,19 @@ namespace ProjectxCam2.DAO
         {
             con = SqlDataHelper.Connect(SqlDataHelper.strConnectionString);
         }
-        public int addHistory(Historys _obj)
+        public int addHistory(History _obj)
         {
-            var datetimenow = Convert.ToDateTime(DateTime.Now.ToString()).ToString("MM/dd/yyyy HH:mm:ss");
+            var datetimenow = Convert.ToDateTime(DateTime.Now.ToString()).ToString("yyyy-MM-dd HH:mm:ss");
             int iResult = -1;
             try
             {
                 if (con != null)
                 {
-                    string sql = "INSERT INTO CapturedHistory(CameraID,PeopleID,FaceCaptured,DateCaptured,TimeIn,TimeOut,FrameCaptured,isDeleted) values(";
+                    string sql = "INSERT INTO History(CameraID,PeopleID,FaceCaptured,DateCaptured,TimeIn,TimeOut,FrameCaptured,isDeleted) values(";
                     sql += "" + _obj.CameraID + "";
                     sql += "," + _obj.PeopleID + "";
                     sql += ",N'" + _obj.FaceCaptured + "'";
-                    sql += ",'" + DateTime.Now.ToString() + "'";
+                    sql += ",'" + datetimenow + "'";
                     if (_obj.TimeIn >= DateTime.Now)
                         sql += ",'" + _obj.TimeIn + "'";
                     else
@@ -46,7 +46,7 @@ namespace ProjectxCam2.DAO
                     iResult = SqlDataHelper.ExecuteNonQuery(sql, con);
                     if (iResult == 1)
                     {
-                        sql = "SELECT MAX(ID) FROM CapturedHistory";
+                        sql = "SELECT MAX(ID) FROM History";
                         iResult = SqlDataHelper.GetMaxID(sql, con);
                         iResult = int.Parse(_obj.ID.ToString());
                     }
@@ -60,23 +60,23 @@ namespace ProjectxCam2.DAO
         public int getMaxID()
         {
             int  iResult = -1;
-            sql = "SELECT MAX(ID) FROM CapturedHistory";
+            sql = "SELECT MAX(ID) FROM History";
             iResult = SqlDataHelper.GetMaxID(sql, con);
             return iResult;
         }
 
-        public List<Historys> getTopHistorys()
+        public List<History> getTopHistorys()
         {
-            List<Historys> listResult = new List<Historys>();
+            List<History> listResult = new List<History>();
             try
             {
-                sql = "Select a.CameraID, a.DateCaptured,a.FrameCaptured,b.PeopleID,b.FirstName,b.LastName,b.Position from CapturedHistory a left join Peoples b on a.PeopleID = b.ID";
+                sql = "Select a.CameraID, a.DateCaptured,a.FrameCaptured,b.PeopleID,b.FirstName,b.LastName,b.Position from History a left join Peoples b on a.PeopleID = b.ID";
                 dt = SqlDataHelper.GetDataToStringSQL(sql, con);
                 if (dt.Rows.Count > 0)
                 {
                     foreach (DataRow Row in dt.Rows)
                     {
-                        Historys obj = new Historys();
+                        History obj = new History();
                     
                         obj.PeopleID = int.Parse(Row["PeopleID"].ToString());
                         obj.CameraID = int.Parse(Row["CameraID"].ToString());
@@ -98,9 +98,9 @@ namespace ProjectxCam2.DAO
             return listResult;
         }
 
-        public List<Historys> getTopHistorys(int _id)
+        public List<History> getTopHistorys(int _id)
         {
-            List<Historys> listResult = new List<Historys>();
+            List<History> listResult = new List<History>();
             try
             {
                 sql = "Select a.CameraID, a.DateCaptured,a.FrameCaptured,b.PeopleID,b.FirstName,b.LastName,b.Position from CapturedHistory a left join Peoples b on a.PeopleID = b.ID and b.PeopleID=0";
@@ -109,7 +109,7 @@ namespace ProjectxCam2.DAO
                 {
                     foreach (DataRow Row in dt.Rows)
                     {
-                        Historys obj = new Historys();
+                        History obj = new History();
 
                         //obj.PeopleID = int.Parse(Row["PeopleID"].ToString());
                         obj.CameraID = int.Parse(Row["CameraID"].ToString());
@@ -130,11 +130,11 @@ namespace ProjectxCam2.DAO
             catch { }
             return listResult;
         }
-        public Historys getLatestHistorybyPeopleID(int _id)
+        public History getLatestHistorybyPeopleID(int _id)
         {
-            Historys obj = new Historys();
+            History obj = new History();
             //sql = "Select top(1) * from CapturedHistory where PeopleID="+ _id +" order by _dectionID desc;";
-            sql = "Select top(1) * from CapturedHistory  where PeopleID="+_id+" order by ID desc";
+            sql = "Select top(1) * from History  where PeopleID="+_id+" order by ID desc";
             dt = SqlDataHelper.GetDataToStringSQL(sql, con);
             if (dt.Rows.Count == 1)
             {
